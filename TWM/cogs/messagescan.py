@@ -505,24 +505,6 @@ class Messagescan(Cog):
             content()
             await holder.edit(embed=embed, allowed_mentions=allowed_mentions)
 
-    @Cog.listener('on_message')
-    async def react_message(self, message):
-        ctx = await self.bot.get_context(message)
-        if (
-            not message.content
-            or ctx.valid
-            or message.author.bot
-        ):
-            return
-        
-        if 'skibidi' in ctx.message.content.lower():
-            await ctx.send("I'm not doing this. Here's a timeout.")
-            if message.guild:
-                await message.delete()
-                await ctx.author.timeout(timedelta(seconds=60), reason="...")
-        elif '67 ' in message.content or ' 67' in message.content or message.content == 67:
-            await message.reply(content="No.")
-
 
 async def setup(bot: Bot):
     await bot.add_cog(Messagescan(bot))
