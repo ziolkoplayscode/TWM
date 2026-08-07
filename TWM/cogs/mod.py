@@ -111,17 +111,6 @@ class Mod(Cog):
 
         await mlog.send(embed=embed)
 
-    @commands.bot_has_permissions(kick_members=True)
-    @commands.check(ismod)
-    @commands.guild_only()
-    @commands.command(aliases=["bootall"])
-    async def kickall(self, ctx: commands.Context):
-        for member in ctx.guild.members:
-            try:
-                await member.kick()
-            except:
-                pass
-
     @commands.bot_has_permissions(ban_members=True)
     @commands.check(ismod)
     @commands.guild_only()
